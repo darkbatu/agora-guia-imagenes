@@ -280,7 +280,7 @@
   <!-- Medida recomendada -->
   <div class="section">
     <div class="medida-box">
-      <span>1200 x 800 pixeles</span>
+      <span>1200 x 750 pixeles</span>
       <small>Proporcion 3:2 - Formato horizontal (landscape) para todas las imagenes</small>
     </div>
     <div class="tip-box">
@@ -530,7 +530,7 @@
     </div>
     <div class="collapsible-body collapsed" id="reglasBody" style="max-height:500px; margin-top:12px;">
       <div class="reglas">
-        <div class="regla ok"><h4>Medida correcta</h4><p>Siempre <strong>1200 x 800 px</strong> minimo.</p></div>
+        <div class="regla ok"><h4>Medida correcta</h4><p>Siempre <strong>1200 x 750 px</strong> minimo.</p></div>
         <div class="regla ok"><h4>Contenido centrado</h4><p>Logo o elemento principal en el <strong>centro</strong>.</p></div>
         <div class="regla ok"><h4>Formato horizontal</h4><p>Siempre <strong>horizontal</strong> (landscape), nunca vertical.</p></div>
         <div class="regla ok"><h4>Buena iluminacion</h4><p>Buena luz, colores vivos, alto contraste.</p></div>
@@ -559,7 +559,7 @@
         <tr><td><strong>Descripcion</strong></td><td>Si</td><td>Entre 30 y 600 caracteres</td></tr>
         <tr><td><strong>Fecha y hora inicio</strong></td><td>Si</td><td>Dia y hora en que comienza</td></tr>
         <tr><td><strong>Fecha y hora fin</strong></td><td>Si</td><td>Dia y hora en que termina</td></tr>
-        <tr><td><strong>Imagen</strong></td><td>Si</td><td>Horizontal (16:10). Minimo 1000px de ancho, ideal 1200 x 800 px. JPG o PNG, max 10 MB. Se recorta automaticamente en el formulario</td></tr>
+        <tr><td><strong>Imagen</strong></td><td>Si</td><td>Horizontal (16:10). Minimo 1000px de ancho, ideal 1200 x 750 px. JPG o PNG, max 10 MB. Se recorta automaticamente en el formulario</td></tr>
         <tr><td><strong>Precio</strong></td><td>Si</td><td>Gratuito o con costo (puede tener rango de precios) o si tiene descuento de estudiante, INAPAM</td></tr>
         <tr><td>Telefono / WhatsApp</td><td>No</td><td>8 a 10 digitos (puede usar el del lugar del evento)</td></tr>
         <tr><td>Evento recurrente</td><td>No</td><td>Si se repite cada semana, cada 2 semanas, mensual, 6 meses, 1 año</td></tr>
@@ -654,8 +654,8 @@
           cambiarBtn.className = 'cambiar-btn visible';
 
           var info = '';
-          if (w >= 1200 && h >= 800) info += '<div class="img-info-item ok"><strong>Medida:</strong> ' + w + 'x' + h + ' px (perfecta)</div>';
-          else if (w >= 800 && h >= 500) info += '<div class="img-info-item warning"><strong>Medida:</strong> ' + w + 'x' + h + ' px (aceptable)</div>';
+          if (w >= 1200 && h >= 750) info += '<div class="img-info-item ok"><strong>Medida:</strong> ' + w + 'x' + h + ' px (perfecta)</div>';
+          else if (w >= 1000 && h >= 625) info += '<div class="img-info-item warning"><strong>Medida:</strong> ' + w + 'x' + h + ' px (aceptable)</div>';
           else info += '<div class="img-info-item error"><strong>Medida:</strong> ' + w + 'x' + h + ' px (muy pequena)</div>';
 
           if (w > h) info += '<div class="img-info-item ok"><strong>Orientacion:</strong> Horizontal</div>';
