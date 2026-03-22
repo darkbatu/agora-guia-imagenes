@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Imagenes - Agora Cultural</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; padding: 16px; max-width: 900px; margin: 0 auto; }
+
+    h1 { text-align: center; margin-bottom: 6px; color: #1a1a2e; font-size: 24px; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: 13px; }
+
+    .section { background: white; border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .section h2 { color: #1a1a2e; margin-bottom: 4px; font-size: 18px; }
+    .section .desc { color: #888; font-size: 12px; margin-bottom: 16px; }
+
+    .medida-box {
+      background: #e8f4fd;
+      border: 2px dashed #2196F3;
+      border-radius: 10px;
+      padding: 12px 18px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .medida-box span { font-size: 20px; font-weight: bold; color: #1565C0; }
+    .medida-box small { display: block; color: #666; font-size: 11px; margin-top: 3px; }
+
+    .tip-box {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .tip-box strong { color: #856404; }
+
+    /* Selector de tipo */
+    .tipo-selector { display: flex; gap: 12px; flex-wrap: wrap; }
+    .tipo-btn {
+      flex: 1;
+      min-width: 180px;
+      padding: 16px;
+      border: 3px solid #ddd;
+      border-radius: 14px;
+      background: #fafafa;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s;
+    }
+    .tipo-btn:hover { border-color: #2196F3; background: #f0f7ff; transform: translateY(-2px); }
+    .tipo-btn.active-evento { border-color: #667eea; background: #f0f0ff; transform: translateY(-2px); }
+    .tipo-btn.active-lugar { border-color: #4CAF50; background: #f1f8e9; transform: translateY(-2px); }
+    .tipo-btn .tipo-icon { font-size: 32px; margin-bottom: 6px; }
+    .tipo-btn .tipo-title { font-size: 14px; font-weight: 700; color: #333; }
+    .tipo-btn .tipo-desc { font-size: 11px; color: #888; margin-top: 3px; }
+
+    /* Upload */
+    .upload-area {
+      border: 3px dashed #2196F3;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+      background: #f8fbff;
+      margin-bottom: 16px;
+    }
+    .upload-area:hover { background: #e8f4fd; border-color: #1565C0; }
+    .upload-area.has-image { border-color: #4CAF50; background: #f1f8e9; border-style: solid; }
+    .upload-icon { font-size: 40px; margin-bottom: 8px; }
+    .upload-text { font-size: 14px; color: #555; }
+    .upload-text small { display: block; color: #999; margin-top: 4px; font-size: 11px; }
+
+    .cambiar-btn {
+      display: none;
+      margin: 0 auto 16px;
+      padding: 8px 20px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cambiar-btn:hover { background: #5a6fd6; }
+    .cambiar-btn.visible { display: block; }
+
+    /* Image info */
+    .img-info { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+    .img-info-item { background: #f8f9fa; border-radius: 8px; padding: 8px 12px; font-size: 12px; }
+    .img-info-item strong { color: #1a1a2e; }
+    .img-info-item.ok { border-left: 4px solid #4CAF50; }
+    .img-info-item.warning { border-left: 4px solid #FF9800; }
+    .img-info-item.error { border-left: 4px solid #f44336; }
+
+    /* Preview */
+    .preview-container { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; justify-content: center; }
+    .preview-item { text-align: center; }
+    .preview-item .title { font-weight: 600; margin-bottom: 6px; color: #444; font-size: 13px; }
+    .preview-item .size-info { color: #999; font-size: 10px; margin-top: 5px; line-height: 1.4; }
+
+    .phone-frame {
+      width: 280px;
+      border: 3px solid #333;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fafafa;
+      margin: 0 auto;
+    }
+    .phone-statusbar {
+      height: 22px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 9px;
+    }
+    .phone-content { padding: 10px; }
+    .section-label { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 6px; text-align: left; }
+
+    /* Cards */
+    .card-destacado { width: 100%; height: 140px; border-radius: 10px; margin-bottom: 10px; overflow: hidden; position: relative; }
+    .card-evento-img { width: 56px; height: 98px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
+    .card-lugar-img { width: 56px; height: 56px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
+    .card-busqueda { background: white; border-radius: 10px; overflow: hidden; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .card-busqueda-img { width: 100%; height: 100px; overflow: hidden; }
+    .card-busqueda-info { padding: 8px; text-align: left; }
+    .card-busqueda-info .bs-title { font-size: 11px; font-weight: 600; }
+    .card-busqueda-info .bs-date { font-size: 9px; color: #999; }
+
+    .card-lugar {
+      display: flex; gap: 8px; background: white; border-radius: 10px;
+      padding: 7px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); align-items: center;
+    }
+    .card-lugar-info { flex: 1; text-align: left; }
+    .card-lugar-info .lg-title { font-size: 11px; font-weight: 600; color: #333; }
+    .card-lugar-info .lg-addr { font-size: 9px; color: #999; margin-top: 2px; }
+
+    .preview-img { width: 100%; height: 100%; object-fit: cover; }
+
+    .placeholder-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 9px; font-weight: bold; text-align: center;
+    }
+
+    /* Zona segura */
+    .zona-container { position: relative; width: 100%; max-width: 500px; margin: 0 auto 20px; border-radius: 10px; overflow: hidden; }
+    .zona-container img { width: 100%; display: block; }
+    .zona-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    .zona-recorte { position: absolute; background: rgba(255,0,0,0.2); }
+    .zona-segura-border { position: absolute; border: 3px dashed #4CAF50; top: 20%; left: 10%; right: 10%; bottom: 20%; border-radius: 8px; }
+    .zona-segura-label-pos { position: absolute; top: calc(20% - 11px); left: 50%; transform: translateX(-50%); background: #4CAF50; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+    .zona-recorte-label { position: absolute; color: white; font-size: 10px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+
+    .zona-placeholder {
+      width: 100%; max-width: 500px; height: 330px; margin: 0 auto 20px; border-radius: 10px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .zona-placeholder::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .zona-placeholder-text { position: relative; z-index: 1; background: rgba(0,0,0,0.4); padding: 10px 16px; border-radius: 8px; color: white; font-weight: bold; text-align: center; font-size: 13px; }
+
+    /* Tabla */
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+    table th { background: #1a1a2e; color: white; padding: 8px 10px; text-align: left; }
+    table td { padding: 8px 10px; border-bottom: 1px solid #eee; }
+    table tr:nth-child(even) { background: #f8f9fa; }
+
+    /* Reglas */
+    .reglas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+    .regla { background: #f8f9fa; border-radius: 10px; padding: 14px; border-left: 4px solid; }
+    .regla.ok { border-color: #4CAF50; }
+    .regla.warning { border-color: #FF9800; }
+    .regla.error { border-color: #f44336; }
+    .regla h4 { font-size: 13px; margin-bottom: 4px; }
+    .regla p { font-size: 11px; color: #666; line-height: 1.4; }
+
+    /* Collapsible */
+    .collapsible-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .collapsible-header .toggle-icon {
+      font-size: 18px;
+      color: #999;
+      transition: transform 0.3s;
+    }
+    .collapsible-header .toggle-icon.open { transform: rotate(180deg); }
+    .collapsible-body { overflow: hidden; transition: max-height 0.3s ease; }
+    .collapsible-body.collapsed { max-height: 0 !important; }
+
+    .tipo-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 600; margin-bottom: 12px;
+    }
+    .tipo-badge.evento { background: #f0f0ff; color: #667eea; border: 1px solid #667eea; }
+    .tipo-badge.lugar { background: #f1f8e9; color: #4CAF50; border: 1px solid #4CAF50; }
+
+    #upload-section, #zona-section { display: none; }
+    #previews-evento, #previews-lugar { display: none; }
+
+    /* Steps indicator */
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 24px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #aaa;
+      font-weight: 600;
+    }
+    .step .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: #ddd;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step.active { color: #667eea; }
+    .step.active .step-num { background: #667eea; }
+    .step.done { color: #4CAF50; }
+    .step.done .step-num { background: #4CAF50; }
+    .step-line {
+      width: 30px;
+      height: 2px;
+      background: #ddd;
+      align-self: center;
+    }
+    .step-line.active { background: #667eea; }
+    .step-line.done { background: #4CAF50; }
+
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .section { padding: 16px; }
+      .phone-frame { width: 260px; }
+      .preview-container { gap: 16px; }
+      .tipo-selector { flex-direction: column; }
+      .steps { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Guia de Imagenes - Agora Cultural</h1>
+  <p class="subtitle">Sube tu imagen y ve como se vera en la app antes de publicarla</p>
+
+  <!-- Steps -->
+  <div class="steps" id="stepsBar">
+    <div class="step active" id="step1"><span class="step-num">1</span> Tipo</div>
+    <div class="step-line" id="line1"></div>
+    <div class="step" id="step2"><span class="step-num">2</span> Imagen</div>
+    <div class="step-line" id="line2"></div>
+    <div class="step" id="step3"><span class="step-num">3</span> Vista previa</div>
+  </div>
+
+  <!-- Medida recomendada -->
+  <div class="section">
+    <div class="medida-box">
+      <span>1200 x 800 pixeles</span>
+      <small>Proporcion 3:2 - Formato horizontal (landscape) para todas las imagenes</small>
+    </div>
+    <div class="tip-box">
+      <strong>Importante:</strong> Coloca el contenido importante (logo, texto, personas) en el <strong>centro</strong> de la imagen,
+      ya que en algunos contextos se recortan los bordes.
+    </div>
+  </div>
+
+  <!-- Paso 1: Tipo -->
+  <div class="section" id="tipo-section">
+    <h2>Paso 1: Que tipo de imagen vas a subir?</h2>
+    <p class="desc">Selecciona para ver donde aparecera tu imagen</p>
+    <div class="tipo-selector">
+      <div class="tipo-btn" id="btnEvento" onclick="seleccionarTipo('evento')">
+        <div class="tipo-icon">&#127915;</div>
+        <div class="tipo-title">Imagen para Evento</div>
+        <div class="tipo-desc">Conciertos, exposiciones, talleres, obras, etc.</div>
+      </div>
+      <div class="tipo-btn" id="btnLugar" onclick="seleccionarTipo('lugar')">
+        <div class="tipo-icon">&#127970;</div>
+        <div class="tipo-title">Imagen para Lugar</div>
+        <div class="tipo-desc">Museos, teatros, galerias, restaurantes, etc.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paso 2: Subir imagen -->
+  <div class="section" id="upload-section">
+    <h2>Paso 2: Sube tu imagen</h2>
+    <p class="desc">Se procesa localmente, no se sube a ningun servidor</p>
+    <span class="tipo-badge" id="tipoBadge"></span>
+
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon" id="uploadIcon">&#128247;</div>
+      <div class="upload-text" id="uploadText">
+        Click aqui o arrastra tu imagen
+        <small>JPG, PNG o WebP</small>
+      </div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+    <button class="cambiar-btn" id="cambiarBtn" onclick="document.getElementById('fileInput').click()">
+      &#128260; Cambiar imagen
+    </button>
+
+    <div id="imgInfo" class="img-info" style="display:none;"></div>
+  </div>
+
+  <!-- Zona segura -->
+  <div class="section" id="zona-section">
+    <div class="collapsible-header" onclick="toggleCollapsible('zonaBody', this)">
+      <div>
+        <h2 style="margin-bottom:0;">Zona Segura</h2>
+        <p class="desc" style="margin-bottom:0;">El contenido dentro de la zona verde siempre se vera</p>
+      </div>
+      <span class="toggle-icon open">&#9660;</span>
+    </div>
+    <div class="collapsible-body" id="zonaBody" style="max-height:600px; margin-top:16px;">
+      <div id="zonaPlaceholder" class="zona-placeholder">
+        <div class="zona-recorte" style="top:0; left:0; right:0; height:20%;"></div>
+        <div class="zona-recorte" style="bottom:0; left:0; right:0; height:20%;"></div>
+        <div class="zona-recorte" style="top:20%; left:0; width:10%; bottom:20%;"></div>
+        <div class="zona-recorte" style="top:20%; right:0; width:10%; bottom:20%;"></div>
+        <div class="zona-segura-border"></div>
+        <div class="zona-segura-label-pos">ZONA SEGURA</div>
+        <div class="zona-recorte-label" style="top:8%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
+        <div class="zona-recorte-label" style="bottom:8%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
+        <div class="zona-placeholder-text">Sube una imagen para ver la zona segura</div>
+      </div>
+      <div id="zonaConImagen" class="zona-container" style="display:none;">
+        <img id="zonaImg" src="">
+        <div class="zona-overlay">
+          <div class="zona-recorte" style="top:0; left:0; right:0; height:20%;"></div>
+          <div class="zona-recorte" style="bottom:0; left:0; right:0; height:20%;"></div>
+          <div class="zona-recorte" style="top:20%; left:0; width:10%; bottom:20%;"></div>
+          <div class="zona-recorte" style="top:20%; right:0; width:10%; bottom:20%;"></div>
+          <div class="zona-segura-border"></div>
+          <div class="zona-segura-label-pos">ZONA SEGURA</div>
+          <div class="zona-recorte-label" style="top:8%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
+          <div class="zona-recorte-label" style="bottom:8%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Previews EVENTO -->
+  <div class="section" id="previews-evento">
+    <h2>Paso 3: Asi se vera en la app</h2>
+    <p class="desc">Tu imagen de evento aparecera en estos 4 contextos</p>
+    <div class="preview-container">
+      <div class="preview-item">
+        <div class="title">Destacados</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Agora Cultural</div>
+          <div class="phone-content">
+            <div class="section-label">Destacados</div>
+            <div class="card-destacado" id="prev-ev-destacado"><div class="placeholder-bg">Tu imagen</div></div>
+          </div>
+        </div>
+        <div class="size-info">Banner horizontal<br>Se corta arriba y abajo</div>
+      </div>
+
+      <div class="preview-item">
+        <div class="title">Proximos Eventos</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Agora Cultural</div>
+          <div class="phone-content">
+            <div class="section-label">Proximos Eventos</div>
+            <div style="display:flex; gap:6px; overflow:hidden;">
+              <div>
+                <div class="card-evento-img" id="prev-ev-card"><div class="placeholder-bg" style="font-size:7px;">TU IMG</div></div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Tu Evento</div>
+                <div style="font-size:7px; color:#999;">Sab 22</div>
+              </div>
+              <div>
+                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c); font-size:7px;">IMG</div></div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 2</div>
+                <div style="font-size:7px; color:#999;">Dom 23</div>
+              </div>
+              <div>
+                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe); font-size:7px;">IMG</div></div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 3</div>
+                <div style="font-size:7px; color:#999;">Lun 24</div>
+              </div>
+              <div>
+                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#43e97b,#38f9d7); font-size:7px;">IMG</div></div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 4</div>
+                <div style="font-size:7px; color:#999;">Mar 25</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="size-info">Card vertical<br><strong>Los lados se cortan</strong></div>
+      </div>
+
+      <div class="preview-item">
+        <div class="title">Busqueda</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Buscar</div>
+          <div class="phone-content">
+            <div class="card-busqueda">
+              <div class="card-busqueda-img" id="prev-ev-busqueda"><div class="placeholder-bg">Tu imagen</div></div>
+              <div class="card-busqueda-info"><div class="bs-title">Tu Evento</div><div class="bs-date">Sab 22 de Marzo - 8:00 PM</div></div>
+            </div>
+            <div class="card-busqueda">
+              <div class="card-busqueda-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c);">IMG</div></div>
+              <div class="card-busqueda-info"><div class="bs-title">Otro Evento</div><div class="bs-date">Dom 23 de Marzo</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="size-info">Card ancha horizontal<br>Se corta arriba y abajo</div>
+      </div>
+
+      <div class="preview-item">
+        <div class="title">Detalle del Evento</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Detalle</div>
+          <div style="width:100%; height:170px; overflow:hidden;" id="prev-ev-detalle"><div class="placeholder-bg">Tu imagen</div></div>
+          <div style="padding:10px; text-align:left;">
+            <div style="font-size:13px; font-weight:600;">Nombre del Evento</div>
+            <div style="font-size:9px; color:#999; margin-top:3px;">Sabado 22 de Marzo</div>
+            <div style="font-size:9px; color:#667eea; margin-top:2px;">Teatro del Estado</div>
+            <div style="font-size:10px; color:#666; margin-top:6px; line-height:1.3;">Descripcion del evento...</div>
+          </div>
+        </div>
+        <div class="size-info">Mejor vista<br>Se ve casi completa</div>
+      </div>
+    </div>
+
+    <button class="cambiar-btn visible" onclick="document.getElementById('fileInput').click()" style="margin-top:20px;">
+      &#128260; Probar con otra imagen
+    </button>
+  </div>
+
+  <!-- Previews LUGAR -->
+  <div class="section" id="previews-lugar">
+    <h2>Paso 3: Asi se vera en la app</h2>
+    <p class="desc">Tu imagen de lugar aparecera en estos 2 contextos</p>
+    <div class="preview-container">
+      <div class="preview-item">
+        <div class="title">Lista de Lugares</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Lugares</div>
+          <div class="phone-content">
+            <div class="section-label">Lugares cercanos</div>
+            <div class="card-lugar">
+              <div class="card-lugar-img" id="prev-lg-card"><div class="placeholder-bg" style="font-size:7px;">TU IMG</div></div>
+              <div class="card-lugar-info"><div class="lg-title">Tu Lugar</div><div class="lg-addr">Calle Principal 123, Col. Centro</div></div>
+            </div>
+            <div class="card-lugar">
+              <div class="card-lugar-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c); font-size:7px;">IMG</div></div>
+              <div class="card-lugar-info"><div class="lg-title">Otro Lugar</div><div class="lg-addr">Av. Avila Camacho 456</div></div>
+            </div>
+            <div class="card-lugar">
+              <div class="card-lugar-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe); font-size:7px;">IMG</div></div>
+              <div class="card-lugar-info"><div class="lg-title">Tercer Lugar</div><div class="lg-addr">Revolucion 789</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="size-info">Card cuadrada (80x80)<br><strong>Los lados se cortan</strong></div>
+      </div>
+
+      <div class="preview-item">
+        <div class="title">Detalle del Lugar</div>
+        <div class="phone-frame">
+          <div class="phone-statusbar">Detalle</div>
+          <div style="width:100%; height:170px; overflow:hidden;" id="prev-lg-detalle"><div class="placeholder-bg">Tu imagen</div></div>
+          <div style="padding:10px; text-align:left;">
+            <div style="font-size:13px; font-weight:600;">Nombre del Lugar</div>
+            <div style="font-size:9px; color:#999; margin-top:3px;">Calle Principal 123, Col. Centro, CP 91000</div>
+            <div style="font-size:9px; color:#667eea; margin-top:2px;">Museo</div>
+            <div style="font-size:10px; color:#666; margin-top:6px; line-height:1.3;">Descripcion del lugar...</div>
+          </div>
+        </div>
+        <div class="size-info">Mejor vista<br>Se ve casi completa</div>
+      </div>
+    </div>
+
+    <button class="cambiar-btn visible" onclick="document.getElementById('fileInput').click()" style="margin-top:20px;">
+      &#128260; Probar con otra imagen
+    </button>
+  </div>
+
+  <!-- Tabla y Reglas colapsables -->
+  <div class="section">
+    <div class="collapsible-header" onclick="toggleCollapsible('tablaBody', this)">
+      <h2 style="margin-bottom:0;">Tabla Resumen</h2>
+      <span class="toggle-icon">&#9660;</span>
+    </div>
+    <div class="collapsible-body collapsed" id="tablaBody" style="max-height:400px; margin-top:12px;">
+      <table>
+        <tr><th>Tipo</th><th>Donde</th><th>Recorte</th><th>Cuidar</th></tr>
+        <tr><td rowspan="4" style="vertical-align:middle; font-weight:bold; color:#667eea;">EVENTO</td><td>Destacados</td><td>Corta arriba/abajo</td><td>Centrar verticalmente</td></tr>
+        <tr><td>Proximos Eventos</td><td>Corta los lados</td><td>Contenido al CENTRO</td></tr>
+        <tr><td>Busqueda</td><td>Corta arriba/abajo</td><td>Similar a destacados</td></tr>
+        <tr><td>Detalle</td><td>Casi sin recorte</td><td>Se ve casi todo</td></tr>
+        <tr><td rowspan="2" style="vertical-align:middle; font-weight:bold; color:#4CAF50;">LUGAR</td><td>Lista de lugares</td><td>Corta los lados</td><td>Fachada/logo al centro</td></tr>
+        <tr><td>Detalle</td><td>Casi sin recorte</td><td>Se ve casi todo</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="collapsible-header" onclick="toggleCollapsible('reglasBody', this)">
+      <h2 style="margin-bottom:0;">Reglas para una Buena Imagen</h2>
+      <span class="toggle-icon">&#9660;</span>
+    </div>
+    <div class="collapsible-body collapsed" id="reglasBody" style="max-height:500px; margin-top:12px;">
+      <div class="reglas">
+        <div class="regla ok"><h4>Medida correcta</h4><p>Siempre <strong>1200 x 800 px</strong> minimo.</p></div>
+        <div class="regla ok"><h4>Contenido centrado</h4><p>Logo o elemento principal en el <strong>centro</strong>.</p></div>
+        <div class="regla ok"><h4>Formato horizontal</h4><p>Siempre <strong>horizontal</strong> (landscape), nunca vertical.</p></div>
+        <div class="regla ok"><h4>Buena iluminacion</h4><p>Buena luz, colores vivos, alto contraste.</p></div>
+        <div class="regla warning"><h4>Texto en la imagen</h4><p>Usa <strong>letras grandes y gruesas</strong>.</p></div>
+        <div class="regla warning"><h4>No saturar</h4><p>Menos es mas. Un elemento principal y fondo limpio.</p></div>
+        <div class="regla error"><h4>NO verticales</h4><p>Se recortaran mal en los lados.</p></div>
+        <div class="regla error"><h4>NO menores a 800px</h4><p>Se veran borrosas y pixeladas.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:#999; font-size:11px; margin-top:20px; padding:16px;">
+    Agora Cultural - Guia de Imagenes
+  </div>
+
+  <script>
+    var tipoSeleccionado = null;
+    var imagenCargada = null;
+    var fileInput = document.getElementById('fileInput');
+    var uploadArea = document.getElementById('uploadArea');
+    var uploadIcon = document.getElementById('uploadIcon');
+    var uploadText = document.getElementById('uploadText');
+    var imgInfo = document.getElementById('imgInfo');
+    var cambiarBtn = document.getElementById('cambiarBtn');
+
+    function updateSteps(step) {
+      var s1 = document.getElementById('step1');
+      var s2 = document.getElementById('step2');
+      var s3 = document.getElementById('step3');
+      var l1 = document.getElementById('line1');
+      var l2 = document.getElementById('line2');
+
+      s1.className = 'step'; s2.className = 'step'; s3.className = 'step';
+      l1.className = 'step-line'; l2.className = 'step-line';
+
+      if (step >= 1) { s1.className = step > 1 ? 'step done' : 'step active'; }
+      if (step >= 2) { s2.className = step > 2 ? 'step done' : 'step active'; l1.className = step > 1 ? 'step-line done' : 'step-line active'; }
+      if (step >= 3) { s3.className = 'step active'; l2.className = 'step-line done'; }
+    }
+
+    function seleccionarTipo(tipo) {
+      tipoSeleccionado = tipo;
+      document.getElementById('btnEvento').className = 'tipo-btn';
+      document.getElementById('btnLugar').className = 'tipo-btn';
+
+      if (tipo === 'evento') {
+        document.getElementById('btnEvento').className = 'tipo-btn active-evento';
+        document.getElementById('tipoBadge').className = 'tipo-badge evento';
+        document.getElementById('tipoBadge').textContent = 'Imagen para Evento';
+      } else {
+        document.getElementById('btnLugar').className = 'tipo-btn active-lugar';
+        document.getElementById('tipoBadge').className = 'tipo-badge lugar';
+        document.getElementById('tipoBadge').textContent = 'Imagen para Lugar';
+      }
+
+      document.getElementById('upload-section').style.display = 'block';
+      document.getElementById('zona-section').style.display = 'block';
+      document.getElementById('previews-evento').style.display = 'none';
+      document.getElementById('previews-lugar').style.display = 'none';
+
+      updateSteps(2);
+
+      if (imagenCargada) {
+        mostrarPreviews(imagenCargada);
+        updateSteps(3);
+      }
+
+      document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    uploadArea.addEventListener('dragover', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#1565C0'; uploadArea.style.background = '#e3f2fd'; });
+    uploadArea.addEventListener('dragleave', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#2196F3'; uploadArea.style.background = '#f8fbff'; });
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.style.borderColor = '#2196F3'; uploadArea.style.background = '#f8fbff';
+      if (e.dataTransfer.files.length > 0) { fileInput.files = e.dataTransfer.files; handleFile(e.dataTransfer.files[0]); }
+    });
+    fileInput.addEventListener('change', function() { if (this.files.length > 0) handleFile(this.files[0]); });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) { alert('Por favor selecciona un archivo de imagen'); return; }
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var w = img.naturalWidth, h = img.naturalHeight;
+          var ratio = (w / h).toFixed(2);
+          var sizeMB = (file.size / 1024 / 1024).toFixed(2);
+
+          uploadArea.classList.add('has-image');
+          uploadIcon.textContent = '\u2705';
+          uploadText.innerHTML = '<strong>' + file.name + '</strong><small>' + w + 'x' + h + ' px - ' + sizeMB + ' MB</small>';
+          cambiarBtn.className = 'cambiar-btn visible';
+
+          var info = '';
+          if (w >= 1200 && h >= 800) info += '<div class="img-info-item ok"><strong>Medida:</strong> ' + w + 'x' + h + ' px (perfecta)</div>';
+          else if (w >= 800 && h >= 500) info += '<div class="img-info-item warning"><strong>Medida:</strong> ' + w + 'x' + h + ' px (aceptable)</div>';
+          else info += '<div class="img-info-item error"><strong>Medida:</strong> ' + w + 'x' + h + ' px (muy pequena)</div>';
+
+          if (w > h) info += '<div class="img-info-item ok"><strong>Orientacion:</strong> Horizontal</div>';
+          else if (w === h) info += '<div class="img-info-item warning"><strong>Orientacion:</strong> Cuadrada</div>';
+          else info += '<div class="img-info-item error"><strong>Orientacion:</strong> Vertical (se recortara)</div>';
+
+          var diff = Math.abs(ratio - 1.5);
+          if (diff < 0.15) info += '<div class="img-info-item ok"><strong>Proporcion:</strong> ' + ratio + '</div>';
+          else if (diff < 0.4) info += '<div class="img-info-item warning"><strong>Proporcion:</strong> ' + ratio + ' (ideal 1.50)</div>';
+          else info += '<div class="img-info-item error"><strong>Proporcion:</strong> ' + ratio + ' (mucho recorte)</div>';
+
+          if (sizeMB <= 5) info += '<div class="img-info-item ok"><strong>Peso:</strong> ' + sizeMB + ' MB</div>';
+          else if (sizeMB <= 10) info += '<div class="img-info-item warning"><strong>Peso:</strong> ' + sizeMB + ' MB</div>';
+          else info += '<div class="img-info-item error"><strong>Peso:</strong> ' + sizeMB + ' MB (max 10 MB)</div>';
+
+          imgInfo.innerHTML = info;
+          imgInfo.style.display = 'flex';
+
+          document.getElementById('zonaPlaceholder').style.display = 'none';
+          document.getElementById('zonaConImagen').style.display = 'block';
+          document.getElementById('zonaImg').src = e.target.result;
+
+          imagenCargada = e.target.result;
+          mostrarPreviews(e.target.result);
+          updateSteps(3);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function mostrarPreviews(src) {
+      if (tipoSeleccionado === 'evento') {
+        document.getElementById('previews-evento').style.display = 'block';
+        document.getElementById('previews-lugar').style.display = 'none';
+        updatePreview('prev-ev-destacado', src);
+        updatePreview('prev-ev-card', src);
+        updatePreview('prev-ev-busqueda', src);
+        updatePreview('prev-ev-detalle', src);
+        document.getElementById('previews-evento').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (tipoSeleccionado === 'lugar') {
+        document.getElementById('previews-lugar').style.display = 'block';
+        document.getElementById('previews-evento').style.display = 'none';
+        updatePreview('prev-lg-card', src);
+        updatePreview('prev-lg-detalle', src);
+        document.getElementById('previews-lugar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function updatePreview(id, src) {
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = '<img src="' + src + '" class="preview-img">';
+    }
+
+    function toggleCollapsible(bodyId, header) {
+      var body = document.getElementById(bodyId);
+      var icon = header.querySelector('.toggle-icon');
+      if (body.classList.contains('collapsed')) {
+        body.classList.remove('collapsed');
+        icon.classList.add('open');
+      } else {
+        body.classList.add('collapsed');
+        icon.classList.remove('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
