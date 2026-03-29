@@ -4,136 +4,191 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guia de Imagenes - Agora Cultural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; padding: 16px; max-width: 900px; margin: 0 auto; }
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #0f0f13;
+      color: #e0e0e0;
+      padding: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-    h1 { text-align: center; margin-bottom: 6px; color: #1a1a2e; font-size: 24px; }
-    .subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: 13px; }
+    /* Header / Brand */
+    .brand-header {
+      text-align: center;
+      padding: 32px 16px 24px;
+    }
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 28px;
+    }
+    .brand-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+    .brand-header .subtitle {
+      color: #8888a0;
+      font-size: 13px;
+      margin-top: 6px;
+    }
 
-    .section { background: white; border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-    .section h2 { color: #1a1a2e; margin-bottom: 4px; font-size: 18px; }
-    .section .desc { color: #888; font-size: 12px; margin-bottom: 16px; }
+    /* Sections */
+    .section {
+      background: #1a1a24;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid #2a2a3a;
+    }
+    .section h2 {
+      color: #ffffff;
+      margin-bottom: 4px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .section .desc {
+      color: #6b6b80;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
 
+    /* Medida box */
     .medida-box {
-      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
       border: none;
-      border-radius: 10px;
-      padding: 12px 18px;
+      border-radius: 12px;
+      padding: 14px 20px;
       display: inline-block;
       margin-bottom: 12px;
     }
-    .medida-box span { font-size: 20px; font-weight: bold; color: white; }
-    .medida-box small { display: block; color: rgba(255,255,255,0.85); font-size: 11px; margin-top: 3px; }
+    .medida-box span { font-size: 20px; font-weight: 700; color: white; }
+    .medida-box small { display: block; color: rgba(255,255,255,0.75); font-size: 11px; margin-top: 4px; }
 
+    /* Tips */
     .tip-box {
-      background: #fff3cd;
-      border: 1px solid #ffc107;
-      border-radius: 8px;
-      padding: 10px 14px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 10px;
+      padding: 12px 14px;
       font-size: 12px;
-      margin-top: 10px;
+      margin-top: 12px;
+      color: #c4c4e0;
     }
-    .tip-box strong { color: #856404; }
+    .tip-box strong { color: #a5b4fc; }
 
     .tip-box.green {
-      background: #d4edda;
-      border-color: #28a745;
+      background: rgba(52,211,153,0.1);
+      border-color: rgba(52,211,153,0.25);
     }
-    .tip-box.green strong { color: #155724; }
+    .tip-box.green strong { color: #34D399; }
 
     /* Upload */
     .upload-area {
-      border: 3px dashed #2196F3;
+      border: 2px dashed #3a3a50;
       border-radius: 14px;
       padding: 30px;
       text-align: center;
       cursor: pointer;
       transition: all 0.25s;
-      background: #f8fbff;
+      background: #15151f;
       margin-bottom: 16px;
     }
-    .upload-area:hover { background: #e8f4fd; border-color: #1565C0; }
-    .upload-area.has-image { border-color: #4CAF50; background: #f1f8e9; border-style: solid; }
+    .upload-area:hover { background: #1e1e2e; border-color: #6366F1; }
+    .upload-area.has-image { border-color: #34D399; background: rgba(52,211,153,0.05); border-style: solid; }
     .upload-icon { font-size: 40px; margin-bottom: 8px; }
-    .upload-text { font-size: 14px; color: #555; }
-    .upload-text small { display: block; color: #999; margin-top: 4px; font-size: 11px; }
+    .upload-text { font-size: 14px; color: #9999b0; }
+    .upload-text small { display: block; color: #6b6b80; margin-top: 4px; font-size: 11px; }
 
     .cambiar-btn {
       display: none;
       margin: 0 auto 16px;
-      padding: 8px 20px;
-      background: #667eea;
+      padding: 10px 24px;
+      background: #6366F1;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
     }
-    .cambiar-btn:hover { background: #5a6fd6; }
+    .cambiar-btn:hover { background: #5558e6; }
     .cambiar-btn.visible { display: block; }
 
     /* Image info */
     .img-info { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
-    .img-info-item { background: #f8f9fa; border-radius: 8px; padding: 8px 12px; font-size: 12px; }
-    .img-info-item strong { color: #1a1a2e; }
-    .img-info-item.ok { border-left: 4px solid #4CAF50; }
-    .img-info-item.warning { border-left: 4px solid #FF9800; }
-    .img-info-item.error { border-left: 4px solid #f44336; }
+    .img-info-item { background: #15151f; border-radius: 10px; padding: 10px 14px; font-size: 12px; color: #c0c0d0; }
+    .img-info-item strong { color: #ffffff; }
+    .img-info-item.ok { border-left: 4px solid #34D399; }
+    .img-info-item.warning { border-left: 4px solid #D97706; }
+    .img-info-item.error { border-left: 4px solid #F87171; }
 
     /* Preview */
     .preview-container { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; justify-content: center; }
     .preview-item { text-align: center; }
-    .preview-item .title { font-weight: 600; margin-bottom: 6px; color: #444; font-size: 13px; }
-    .preview-item .size-info { color: #999; font-size: 10px; margin-top: 5px; line-height: 1.4; }
+    .preview-item .title { font-weight: 600; margin-bottom: 6px; color: #c0c0d8; font-size: 13px; }
+    .preview-item .size-info { color: #6b6b80; font-size: 10px; margin-top: 5px; line-height: 1.4; }
 
     .phone-frame {
       width: 280px;
-      border: 3px solid #333;
+      border: 2px solid #3a3a50;
       border-radius: 22px;
       overflow: hidden;
-      background: #fafafa;
+      background: #121218;
       margin: 0 auto;
     }
     .phone-statusbar {
       height: 22px;
-      background: #333;
+      background: #1a1a24;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #8888a0;
       font-size: 9px;
+      font-weight: 600;
     }
     .phone-content { padding: 10px; }
-    .section-label { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 6px; text-align: left; }
+    .section-label { font-size: 12px; font-weight: 600; color: #e0e0e8; margin-bottom: 6px; text-align: left; }
 
     /* Cards con ratio 1:1 */
-    .card-destacado-sq { width: 100%; aspect-ratio: 1/1; border-radius: 10px; margin-bottom: 10px; overflow: hidden; position: relative; }
-    .card-evento-img-sq { width: 70px; height: 70px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
-    .card-lugar-img-sq { width: 56px; height: 56px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
-    .card-busqueda { background: white; border-radius: 10px; overflow: hidden; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .card-destacado-sq { width: 100%; aspect-ratio: 1/1; border-radius: 12px; margin-bottom: 10px; overflow: hidden; position: relative; }
+    .card-evento-img-sq { width: 70px; height: 70px; border-radius: 8px; flex-shrink: 0; overflow: hidden; }
+    .card-lugar-img-sq { width: 56px; height: 56px; border-radius: 8px; flex-shrink: 0; overflow: hidden; }
+    .card-busqueda { background: #1a1a24; border-radius: 12px; overflow: hidden; margin-bottom: 6px; }
     .card-busqueda-img-sq { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
     .card-busqueda-info { padding: 8px; text-align: left; }
-    .card-busqueda-info .bs-title { font-size: 11px; font-weight: 600; }
-    .card-busqueda-info .bs-date { font-size: 9px; color: #999; }
+    .card-busqueda-info .bs-title { font-size: 11px; font-weight: 600; color: #e0e0e8; }
+    .card-busqueda-info .bs-date { font-size: 9px; color: #6b6b80; }
 
     .card-lugar {
-      display: flex; gap: 8px; background: white; border-radius: 10px;
-      padding: 7px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); align-items: center;
+      display: flex; gap: 8px; background: #1a1a24; border-radius: 12px;
+      padding: 7px; margin-bottom: 6px; align-items: center;
     }
     .card-lugar-info { flex: 1; text-align: left; }
-    .card-lugar-info .lg-title { font-size: 11px; font-weight: 600; color: #333; }
-    .card-lugar-info .lg-addr { font-size: 9px; color: #999; margin-top: 2px; }
+    .card-lugar-info .lg-title { font-size: 11px; font-weight: 600; color: #e0e0e8; }
+    .card-lugar-info .lg-addr { font-size: 9px; color: #6b6b80; margin-top: 2px; }
 
     .preview-img { width: 100%; height: 100%; object-fit: cover; }
 
     .placeholder-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 9px; font-weight: bold; text-align: center;
+      color: rgba(255,255,255,0.7); font-size: 9px; font-weight: bold; text-align: center;
     }
 
     /* Detalle con aspect ratio 1:1 */
@@ -141,18 +196,22 @@
 
     /* Tabla */
     table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
-    table th { background: #1a1a2e; color: white; padding: 8px 10px; text-align: left; }
-    table td { padding: 8px 10px; border-bottom: 1px solid #eee; }
-    table tr:nth-child(even) { background: #f8f9fa; }
+    table th { background: #6366F1; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+    table th:first-child { border-radius: 8px 0 0 0; }
+    table th:last-child { border-radius: 0 8px 0 0; }
+    table td { padding: 10px 12px; border-bottom: 1px solid #2a2a3a; color: #c0c0d0; }
+    table tr:nth-child(even) { background: #15151f; }
+    table td strong { color: #ffffff; }
 
     /* Reglas */
     .reglas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
-    .regla { background: #f8f9fa; border-radius: 10px; padding: 14px; border-left: 4px solid; }
-    .regla.ok { border-color: #4CAF50; }
-    .regla.warning { border-color: #FF9800; }
-    .regla.error { border-color: #f44336; }
-    .regla h4 { font-size: 13px; margin-bottom: 4px; }
-    .regla p { font-size: 11px; color: #666; line-height: 1.4; }
+    .regla { background: #15151f; border-radius: 12px; padding: 14px; border-left: 4px solid; }
+    .regla.ok { border-color: #34D399; }
+    .regla.warning { border-color: #D97706; }
+    .regla.error { border-color: #F87171; }
+    .regla h4 { font-size: 13px; margin-bottom: 4px; color: #e0e0e8; }
+    .regla p { font-size: 11px; color: #8888a0; line-height: 1.5; }
+    .regla p strong { color: #c0c0d8; }
 
     /* Collapsible */
     .collapsible-header {
@@ -162,22 +221,39 @@
       cursor: pointer;
       user-select: none;
     }
-    .collapsible-header .toggle-icon { font-size: 18px; color: #999; transition: transform 0.3s; }
+    .collapsible-header .toggle-icon { font-size: 18px; color: #6b6b80; transition: transform 0.3s; }
     .collapsible-header .toggle-icon.open { transform: rotate(180deg); }
     .collapsible-body { overflow: hidden; transition: max-height 0.3s ease; }
     .collapsible-body.collapsed { max-height: 0 !important; }
 
     /* Steps */
     .steps { display: flex; justify-content: center; gap: 0; margin-bottom: 24px; }
-    .step { display: flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; color: #aaa; font-weight: 600; }
-    .step .step-num { width: 24px; height: 24px; border-radius: 50%; background: #ddd; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
-    .step.active { color: #667eea; }
-    .step.active .step-num { background: #667eea; }
-    .step.done { color: #4CAF50; }
-    .step.done .step-num { background: #4CAF50; }
-    .step-line { width: 30px; height: 2px; background: #ddd; align-self: center; }
-    .step-line.active { background: #667eea; }
-    .step-line.done { background: #4CAF50; }
+    .step { display: flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; color: #5a5a70; font-weight: 600; }
+    .step .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: #2a2a3a; color: #5a5a70;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .step.active { color: #a5b4fc; }
+    .step.active .step-num { background: #6366F1; color: white; }
+    .step.done { color: #34D399; }
+    .step.done .step-num { background: #34D399; color: white; }
+    .step-line { width: 30px; height: 2px; background: #2a2a3a; align-self: center; }
+    .step-line.active { background: #6366F1; }
+    .step-line.done { background: #34D399; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #4a4a60;
+      font-size: 11px;
+      margin-top: 24px;
+      padding: 20px 16px;
+      border-top: 1px solid #2a2a3a;
+    }
+    .footer a { color: #6366F1; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
       body { padding: 10px; }
@@ -185,13 +261,18 @@
       .phone-frame { width: 240px; }
       .preview-container { gap: 16px; }
       .steps { flex-wrap: wrap; }
+      .brand-header { padding: 20px 12px 16px; }
     }
   </style>
 </head>
 <body>
 
-  <h1>Guia de Imagenes</h1>
-  <p class="subtitle">Agora Cultural — Formato cuadrado 1:1 (compatible con Instagram y Facebook)</p>
+  <!-- Brand Header -->
+  <div class="brand-header">
+    <div class="brand-logo">A</div>
+    <h1>Guia de Imagenes</h1>
+    <p class="subtitle">Agora Cultural — Formato cuadrado 1:1</p>
+  </div>
 
   <!-- Steps -->
   <div class="steps" id="stepsBar">
@@ -209,7 +290,7 @@
       <small>Formato cuadrado 1:1 — compatible con Instagram y Facebook</small>
     </div>
     <div class="tip-box green" style="margin-top:14px;">
-      <strong>&#127775; Tip:</strong> Puedes descargar tu flyer de Instagram y subirlo directo a Agora sin recortar ni ajustar nada.
+      <strong>Tip:</strong> Puedes descargar tu flyer de Instagram y subirlo directo a Agora sin recortar ni ajustar nada.
     </div>
   </div>
 
@@ -228,7 +309,7 @@
     <input type="file" id="fileInput" accept="image/*" style="display:none">
 
     <button class="cambiar-btn" id="cambiarBtn" onclick="document.getElementById('fileInput').click()">
-      &#128260; Cambiar imagen
+      Cambiar imagen
     </button>
 
     <div id="imgInfo" class="img-info" style="display:none;"></div>
@@ -265,22 +346,22 @@
                 <div class="card-evento-img-sq" id="preview-card">
                   <div class="placeholder-bg" style="font-size:7px;">TU IMG</div>
                 </div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Tu Evento</div>
-                <div style="font-size:7px; color:#999;">Sab 22</div>
+                <div style="font-size:8px; color:#e0e0e8; font-weight:600; width:70px; margin-top:3px;">Tu Evento</div>
+                <div style="font-size:7px; color:#6b6b80;">Sab 22</div>
               </div>
               <div>
                 <div class="card-evento-img-sq">
-                  <div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c); font-size:7px;">IMG</div>
+                  <div class="placeholder-bg" style="background:linear-gradient(135deg,#8B5CF6,#6366F1); font-size:7px;">IMG</div>
                 </div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Evento 2</div>
-                <div style="font-size:7px; color:#999;">Dom 23</div>
+                <div style="font-size:8px; color:#e0e0e8; font-weight:600; width:70px; margin-top:3px;">Evento 2</div>
+                <div style="font-size:7px; color:#6b6b80;">Dom 23</div>
               </div>
               <div>
                 <div class="card-evento-img-sq">
                   <div class="placeholder-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe); font-size:7px;">IMG</div>
                 </div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Evento 3</div>
-                <div style="font-size:7px; color:#999;">Lun 24</div>
+                <div style="font-size:8px; color:#e0e0e8; font-weight:600; width:70px; margin-top:3px;">Evento 3</div>
+                <div style="font-size:7px; color:#6b6b80;">Lun 24</div>
               </div>
             </div>
           </div>
@@ -296,22 +377,22 @@
             <div class="placeholder-bg">Tu imagen</div>
           </div>
           <div style="padding:10px; text-align:left;">
-            <div style="font-size:13px; font-weight:600;">Nombre del Evento</div>
-            <div style="font-size:9px; color:#999; margin-top:3px;">Sabado 22 de Marzo</div>
-            <div style="display:flex; align-items:center; gap:4px; background:#f5f5f5; border-radius:8px; padding:5px 8px; margin-top:6px;">
+            <div style="font-size:13px; font-weight:600; color:#ffffff;">Nombre del Evento</div>
+            <div style="font-size:9px; color:#6b6b80; margin-top:3px;">Sabado 22 de Marzo</div>
+            <div style="display:flex; align-items:center; gap:4px; background:#15151f; border-radius:8px; padding:5px 8px; margin-top:6px;">
               <span style="font-size:9px;">&#128205;</span>
-              <span style="font-size:9px; color:#555;">Teatro del Estado</span>
-              <span style="font-size:9px; color:#999; margin-left:auto;">&#8250;</span>
+              <span style="font-size:9px; color:#9999b0;">Teatro del Estado</span>
+              <span style="font-size:9px; color:#4a4a60; margin-left:auto;">&#8250;</span>
             </div>
-            <div style="font-size:9px; color:#4CAF50; font-weight:600; margin-top:6px;">Gratis</div>
+            <div style="font-size:9px; color:#34D399; font-weight:600; margin-top:6px;">Gratis</div>
           </div>
         </div>
-        <div class="size-info">Aspect ratio 1:1<br><strong>Se ve TODO sin recortar</strong></div>
+        <div class="size-info">Aspect ratio 1:1<br><strong style="color:#a5b4fc;">Se ve TODO sin recortar</strong></div>
       </div>
     </div>
 
     <button class="cambiar-btn visible" onclick="document.getElementById('fileInput').click()" style="margin-top:20px;">
-      &#128260; Probar con otra imagen
+      Probar con otra imagen
     </button>
   </div>
 
@@ -352,8 +433,8 @@
     </div>
   </div>
 
-  <div style="text-align:center; color:#999; font-size:11px; margin-top:20px; padding:16px;">
-    Agora Cultural - Guia de Imagenes
+  <div class="footer">
+    Agora Cultural — Guia de Imagenes
   </div>
 
   <script>
@@ -374,11 +455,11 @@
       if (step >= 2) { s2.className = 'step active'; l1.className = 'step-line done'; }
     }
 
-    uploadArea.addEventListener('dragover', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#1565C0'; uploadArea.style.background = '#e3f2fd'; });
-    uploadArea.addEventListener('dragleave', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#2196F3'; uploadArea.style.background = '#f8fbff'; });
+    uploadArea.addEventListener('dragover', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#6366F1'; uploadArea.style.background = '#1e1e2e'; });
+    uploadArea.addEventListener('dragleave', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#3a3a50'; uploadArea.style.background = '#15151f'; });
     uploadArea.addEventListener('drop', function(e) {
       e.preventDefault();
-      uploadArea.style.borderColor = '#2196F3'; uploadArea.style.background = '#f8fbff';
+      uploadArea.style.borderColor = '#3a3a50'; uploadArea.style.background = '#15151f';
       if (e.dataTransfer.files.length > 0) { fileInput.files = e.dataTransfer.files; handleFile(e.dataTransfer.files[0]); }
     });
     fileInput.addEventListener('change', function() { if (this.files.length > 0) handleFile(this.files[0]); });
@@ -395,7 +476,7 @@
 
           uploadArea.classList.add('has-image');
           uploadIcon.textContent = '\u2705';
-          uploadText.innerHTML = '<strong>' + file.name + '</strong><small>' + w + 'x' + h + ' px - ' + sizeMB + ' MB</small>';
+          uploadText.innerHTML = '<strong style="color:#e0e0e8;">' + file.name + '</strong><small>' + w + 'x' + h + ' px - ' + sizeMB + ' MB</small>';
           cambiarBtn.className = 'cambiar-btn visible';
 
           var info = '';
