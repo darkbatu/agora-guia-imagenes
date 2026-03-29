@@ -16,15 +16,15 @@
     .section .desc { color: #888; font-size: 12px; margin-bottom: 16px; }
 
     .medida-box {
-      background: #e8f4fd;
-      border: 2px dashed #2196F3;
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border: none;
       border-radius: 10px;
       padding: 12px 18px;
       display: inline-block;
       margin-bottom: 12px;
     }
-    .medida-box span { font-size: 20px; font-weight: bold; color: #1565C0; }
-    .medida-box small { display: block; color: #666; font-size: 11px; margin-top: 3px; }
+    .medida-box span { font-size: 20px; font-weight: bold; color: white; }
+    .medida-box small { display: block; color: rgba(255,255,255,0.85); font-size: 11px; margin-top: 3px; }
 
     .tip-box {
       background: #fff3cd;
@@ -35,6 +35,12 @@
       margin-top: 10px;
     }
     .tip-box strong { color: #856404; }
+
+    .tip-box.green {
+      background: #d4edda;
+      border-color: #28a745;
+    }
+    .tip-box.green strong { color: #155724; }
 
     /* Upload */
     .upload-area {
@@ -103,14 +109,23 @@
     .phone-content { padding: 10px; }
     .section-label { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 6px; text-align: left; }
 
-    /* Cards */
-    .card-destacado { width: 100%; height: 140px; border-radius: 10px; margin-bottom: 10px; overflow: hidden; position: relative; }
-    .card-evento-img { width: 56px; height: 98px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
+    /* Cards con ratio 1:1 */
+    .card-destacado-sq { width: 100%; aspect-ratio: 1/1; border-radius: 10px; margin-bottom: 10px; overflow: hidden; position: relative; }
+    .card-evento-img-sq { width: 70px; height: 70px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
+    .card-lugar-img-sq { width: 56px; height: 56px; border-radius: 7px; flex-shrink: 0; overflow: hidden; }
     .card-busqueda { background: white; border-radius: 10px; overflow: hidden; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .card-busqueda-img { width: 100%; height: 100px; overflow: hidden; }
+    .card-busqueda-img-sq { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
     .card-busqueda-info { padding: 8px; text-align: left; }
     .card-busqueda-info .bs-title { font-size: 11px; font-weight: 600; }
     .card-busqueda-info .bs-date { font-size: 9px; color: #999; }
+
+    .card-lugar {
+      display: flex; gap: 8px; background: white; border-radius: 10px;
+      padding: 7px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); align-items: center;
+    }
+    .card-lugar-info { flex: 1; text-align: left; }
+    .card-lugar-info .lg-title { font-size: 11px; font-weight: 600; color: #333; }
+    .card-lugar-info .lg-addr { font-size: 9px; color: #999; margin-top: 2px; }
 
     .preview-img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -121,60 +136,8 @@
       color: white; font-size: 9px; font-weight: bold; text-align: center;
     }
 
-    /* Detalle mockup */
-    .detalle-img-container {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      border-radius: 12px;
-      margin: 10px 10px 0;
-      width: calc(100% - 20px);
-    }
-    .detalle-sede-chip {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(102, 126, 234, 0.08);
-      border-radius: 8px;
-      padding: 6px 8px;
-      margin-top: 6px;
-    }
-    .detalle-sede-chip .sede-icon { color: #667eea; font-size: 12px; }
-    .detalle-sede-chip .sede-name { font-size: 10px; font-weight: 600; color: #667eea; }
-    .detalle-sede-chip .sede-addr { font-size: 8px; color: #999; }
-    .detalle-sede-chip .sede-arrow { color: #ccc; font-size: 12px; margin-left: auto; }
-    .detalle-precio { font-size: 11px; font-weight: 700; color: #e67e22; margin-top: 5px; }
-    .detalle-clasificacion {
-      display: inline-block;
-      font-size: 8px;
-      font-weight: 600;
-      color: #667eea;
-      border: 1px solid #667eea;
-      border-radius: 10px;
-      padding: 1px 6px;
-      margin-top: 4px;
-    }
-
-    /* Zona segura */
-    .zona-container { position: relative; width: 100%; max-width: 500px; margin: 0 auto 20px; border-radius: 10px; overflow: hidden; }
-    .zona-container img { width: 100%; display: block; }
-    .zona-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-    .zona-recorte { position: absolute; background: rgba(255,0,0,0.2); }
-    .zona-segura-border { position: absolute; border: 3px dashed #4CAF50; top: 15%; left: 8%; right: 8%; bottom: 15%; border-radius: 8px; }
-    .zona-segura-label-pos { position: absolute; top: calc(15% - 11px); left: 50%; transform: translateX(-50%); background: #4CAF50; color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
-    .zona-recorte-label { position: absolute; color: white; font-size: 10px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
-
-    .zona-placeholder {
-      width: 100%; max-width: 500px; aspect-ratio: 16/10; margin: 0 auto 20px; border-radius: 10px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
-    }
-    .zona-placeholder::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .zona-placeholder-text { position: relative; z-index: 1; background: rgba(0,0,0,0.4); padding: 10px 16px; border-radius: 8px; color: white; font-weight: bold; text-align: center; font-size: 13px; }
+    /* Detalle con aspect ratio 1:1 */
+    .detalle-sq { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
 
     /* Tabla */
     table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
@@ -199,61 +162,27 @@
       cursor: pointer;
       user-select: none;
     }
-    .collapsible-header .toggle-icon {
-      font-size: 18px;
-      color: #999;
-      transition: transform 0.3s;
-    }
+    .collapsible-header .toggle-icon { font-size: 18px; color: #999; transition: transform 0.3s; }
     .collapsible-header .toggle-icon.open { transform: rotate(180deg); }
     .collapsible-body { overflow: hidden; transition: max-height 0.3s ease; }
     .collapsible-body.collapsed { max-height: 0 !important; }
 
-    /* Steps indicator */
-    .steps {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 24px;
-    }
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      font-size: 12px;
-      color: #aaa;
-      font-weight: 600;
-    }
-    .step .step-num {
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: #ddd;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-    }
+    /* Steps */
+    .steps { display: flex; justify-content: center; gap: 0; margin-bottom: 24px; }
+    .step { display: flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; color: #aaa; font-weight: 600; }
+    .step .step-num { width: 24px; height: 24px; border-radius: 50%; background: #ddd; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
     .step.active { color: #667eea; }
     .step.active .step-num { background: #667eea; }
     .step.done { color: #4CAF50; }
     .step.done .step-num { background: #4CAF50; }
-    .step-line {
-      width: 30px;
-      height: 2px;
-      background: #ddd;
-      align-self: center;
-    }
+    .step-line { width: 30px; height: 2px; background: #ddd; align-self: center; }
     .step-line.active { background: #667eea; }
     .step-line.done { background: #4CAF50; }
-
-    #upload-section, #zona-section, #previews-section { display: none; }
 
     @media (max-width: 600px) {
       body { padding: 10px; }
       .section { padding: 16px; }
-      .phone-frame { width: 260px; }
+      .phone-frame { width: 240px; }
       .preview-container { gap: 16px; }
       .steps { flex-wrap: wrap; }
     }
@@ -261,8 +190,8 @@
 </head>
 <body>
 
-  <h1>Guia de Imagenes - Agora Cultural</h1>
-  <p class="subtitle">Sube tu imagen y ve como se vera en la app antes de publicarla</p>
+  <h1>Guia de Imagenes</h1>
+  <p class="subtitle">Agora Cultural — Formato cuadrado 1:1 (compatible con Instagram y Facebook)</p>
 
   <!-- Steps -->
   <div class="steps" id="stepsBar">
@@ -271,29 +200,29 @@
     <div class="step" id="step2"><span class="step-num">2</span> Vista previa</div>
   </div>
 
-  <!-- Medida recomendada -->
+  <!-- Medidas -->
   <div class="section">
-    <h2>Medida recomendada para eventos</h2>
+    <h2>Medida recomendada</h2>
+    <p class="desc">Formato cuadrado compatible con Instagram y Facebook</p>
     <div class="medida-box">
-      <span>1200 x 750 pixeles</span>
-      <small>Proporcion 16:10 - Formato horizontal (landscape)</small>
+      <span>1080 x 1080 px</span>
+      <small>Formato cuadrado 1:1 — compatible con Instagram y Facebook</small>
     </div>
-    <div class="tip-box">
-      <strong>Importante:</strong> Coloca el contenido importante (logo, texto, personas) en el <strong>centro</strong> de la imagen,
-      ya que en algunos contextos se recortan los bordes.
+    <div class="tip-box green" style="margin-top:14px;">
+      <strong>&#127775; Tip:</strong> Puedes descargar tu flyer de Instagram y subirlo directo a Agora sin recortar ni ajustar nada.
     </div>
   </div>
 
-  <!-- Paso 1: Subir imagen -->
-  <div class="section" id="upload-section-wrapper">
-    <h2>Paso 1: Sube tu imagen</h2>
-    <p class="desc">Se procesa localmente, no se sube a ningun servidor</p>
+  <!-- Subir imagen -->
+  <div class="section">
+    <h2>Sube tu imagen</h2>
+    <p class="desc">Se procesa localmente, no se sube a ningun servidor. Prueba con tu flyer.</p>
 
     <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
       <div class="upload-icon" id="uploadIcon">&#128247;</div>
       <div class="upload-text" id="uploadText">
         Click aqui o arrastra tu imagen
-        <small>JPG, PNG o WebP</small>
+        <small>JPG, PNG o WebP — ideal 1080x1080 px</small>
       </div>
     </div>
     <input type="file" id="fileInput" accept="image/*" style="display:none">
@@ -305,47 +234,11 @@
     <div id="imgInfo" class="img-info" style="display:none;"></div>
   </div>
 
-  <!-- Zona segura -->
-  <div class="section" id="zona-section">
-    <div class="collapsible-header" onclick="toggleCollapsible('zonaBody', this)">
-      <div>
-        <h2 style="margin-bottom:0;">Zona Segura</h2>
-        <p class="desc" style="margin-bottom:0;">El contenido dentro de la zona verde siempre se vera</p>
-      </div>
-      <span class="toggle-icon open">&#9660;</span>
-    </div>
-    <div class="collapsible-body" id="zonaBody" style="max-height:600px; margin-top:16px;">
-      <div id="zonaPlaceholder" class="zona-placeholder">
-        <div class="zona-recorte" style="top:0; left:0; right:0; height:15%;"></div>
-        <div class="zona-recorte" style="bottom:0; left:0; right:0; height:15%;"></div>
-        <div class="zona-recorte" style="top:15%; left:0; width:8%; bottom:15%;"></div>
-        <div class="zona-recorte" style="top:15%; right:0; width:8%; bottom:15%;"></div>
-        <div class="zona-segura-border"></div>
-        <div class="zona-segura-label-pos">ZONA SEGURA</div>
-        <div class="zona-recorte-label" style="top:5%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
-        <div class="zona-recorte-label" style="bottom:5%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
-        <div class="zona-placeholder-text">Sube una imagen para ver la zona segura</div>
-      </div>
-      <div id="zonaConImagen" class="zona-container" style="display:none;">
-        <img id="zonaImg" src="">
-        <div class="zona-overlay">
-          <div class="zona-recorte" style="top:0; left:0; right:0; height:15%;"></div>
-          <div class="zona-recorte" style="bottom:0; left:0; right:0; height:15%;"></div>
-          <div class="zona-recorte" style="top:15%; left:0; width:8%; bottom:15%;"></div>
-          <div class="zona-recorte" style="top:15%; right:0; width:8%; bottom:15%;"></div>
-          <div class="zona-segura-border"></div>
-          <div class="zona-segura-label-pos">ZONA SEGURA</div>
-          <div class="zona-recorte-label" style="top:5%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
-          <div class="zona-recorte-label" style="bottom:5%; left:50%; transform:translateX(-50%);">Puede cortarse</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Previews -->
-  <div class="section" id="previews-section">
-    <h2>Paso 2: Asi se vera en la app</h2>
-    <p class="desc">Tu imagen aparecera en estos 4 contextos</p>
+  <div class="section" id="previews-section" style="display:none;">
+    <h2>Asi se vera en la app</h2>
+    <p class="desc">Vista previa de tu imagen en las diferentes secciones de Agora Cultural</p>
+
     <div class="preview-container">
       <div class="preview-item">
         <div class="title">Destacados</div>
@@ -353,10 +246,12 @@
           <div class="phone-statusbar">Agora Cultural</div>
           <div class="phone-content">
             <div class="section-label">Destacados</div>
-            <div class="card-destacado" id="prev-destacado"><div class="placeholder-bg">Tu imagen</div></div>
+            <div class="card-destacado-sq" id="preview-destacado">
+              <div class="placeholder-bg">Tu imagen</div>
+            </div>
           </div>
         </div>
-        <div class="size-info">Banner horizontal<br>Se corta arriba y abajo</div>
+        <div class="size-info">Banner cuadrado 1:1<br>Se ve la imagen completa</div>
       </div>
 
       <div class="preview-item">
@@ -367,70 +262,51 @@
             <div class="section-label">Proximos Eventos</div>
             <div style="display:flex; gap:6px; overflow:hidden;">
               <div>
-                <div class="card-evento-img" id="prev-card"><div class="placeholder-bg" style="font-size:7px;">TU IMG</div></div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Tu Evento</div>
+                <div class="card-evento-img-sq" id="preview-card">
+                  <div class="placeholder-bg" style="font-size:7px;">TU IMG</div>
+                </div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Tu Evento</div>
                 <div style="font-size:7px; color:#999;">Sab 22</div>
               </div>
               <div>
-                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c); font-size:7px;">IMG</div></div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 2</div>
+                <div class="card-evento-img-sq">
+                  <div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c); font-size:7px;">IMG</div>
+                </div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Evento 2</div>
                 <div style="font-size:7px; color:#999;">Dom 23</div>
               </div>
               <div>
-                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe); font-size:7px;">IMG</div></div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 3</div>
+                <div class="card-evento-img-sq">
+                  <div class="placeholder-bg" style="background:linear-gradient(135deg,#4facfe,#00f2fe); font-size:7px;">IMG</div>
+                </div>
+                <div style="font-size:8px; color:#333; font-weight:600; width:70px; margin-top:3px;">Evento 3</div>
                 <div style="font-size:7px; color:#999;">Lun 24</div>
               </div>
-              <div>
-                <div class="card-evento-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#43e97b,#38f9d7); font-size:7px;">IMG</div></div>
-                <div style="font-size:8px; color:#333; font-weight:600; width:56px; margin-top:3px;">Evento 4</div>
-                <div style="font-size:7px; color:#999;">Mar 25</div>
-              </div>
             </div>
           </div>
         </div>
-        <div class="size-info">Card vertical<br><strong>Los lados se cortan</strong></div>
-      </div>
-
-      <div class="preview-item">
-        <div class="title">Busqueda</div>
-        <div class="phone-frame">
-          <div class="phone-statusbar">Buscar</div>
-          <div class="phone-content">
-            <div class="card-busqueda">
-              <div class="card-busqueda-img" id="prev-busqueda"><div class="placeholder-bg">Tu imagen</div></div>
-              <div class="card-busqueda-info"><div class="bs-title">Tu Evento</div><div class="bs-date">Sab 22 de Marzo - 8:00 PM</div></div>
-            </div>
-            <div class="card-busqueda">
-              <div class="card-busqueda-img"><div class="placeholder-bg" style="background:linear-gradient(135deg,#f093fb,#f5576c);">IMG</div></div>
-              <div class="card-busqueda-info"><div class="bs-title">Otro Evento</div><div class="bs-date">Dom 23 de Marzo</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="size-info">Card ancha horizontal<br>Se corta arriba y abajo</div>
+        <div class="size-info">Card 70x70 cuadrado<br>Imagen sin recorte</div>
       </div>
 
       <div class="preview-item">
         <div class="title">Detalle del Evento</div>
         <div class="phone-frame">
           <div class="phone-statusbar">Detalle</div>
-          <div class="detalle-img-container" id="prev-detalle"><div class="placeholder-bg">Tu imagen</div></div>
+          <div class="detalle-sq" id="preview-detalle">
+            <div class="placeholder-bg">Tu imagen</div>
+          </div>
           <div style="padding:10px; text-align:left;">
-            <div style="font-size:13px; font-weight:700;">Nombre del Evento</div>
-            <div class="detalle-sede-chip">
-              <span class="sede-icon">&#128205;</span>
-              <div style="flex:1; min-width:0;">
-                <div class="sede-name">Nombre de la Sede</div>
-                <div class="sede-addr">Calle, Num, Colonia, CP, Ciudad</div>
-              </div>
-              <span class="sede-arrow">&#10095;</span>
+            <div style="font-size:13px; font-weight:600;">Nombre del Evento</div>
+            <div style="font-size:9px; color:#999; margin-top:3px;">Sabado 22 de Marzo</div>
+            <div style="display:flex; align-items:center; gap:4px; background:#f5f5f5; border-radius:8px; padding:5px 8px; margin-top:6px;">
+              <span style="font-size:9px;">&#128205;</span>
+              <span style="font-size:9px; color:#555;">Teatro del Estado</span>
+              <span style="font-size:9px; color:#999; margin-left:auto;">&#8250;</span>
             </div>
-            <div style="font-size:9px; color:#999; margin-top:5px;">&#128197; Sabado 22 de Marzo de 2026<br>8:00 PM - 11:00 PM</div>
-            <div class="detalle-precio">&#128176; $80</div>
-            <div class="detalle-clasificacion">AA - Todo Publico</div>
+            <div style="font-size:9px; color:#4CAF50; font-weight:600; margin-top:6px;">Gratis</div>
           </div>
         </div>
-        <div class="size-info">Imagen completa 16:10<br><strong>Se ve tal cual la subes</strong></div>
+        <div class="size-info">Aspect ratio 1:1<br><strong>Se ve TODO sin recortar</strong></div>
       </div>
     </div>
 
@@ -439,65 +315,40 @@
     </button>
   </div>
 
-  <!-- Tabla Resumen -->
+  <!-- Tabla de medidas -->
   <div class="section">
     <div class="collapsible-header" onclick="toggleCollapsible('tablaBody', this)">
-      <h2 style="margin-bottom:0;">Tabla Resumen</h2>
+      <h2 style="margin-bottom:0;">Medidas por seccion</h2>
       <span class="toggle-icon">&#9660;</span>
     </div>
-    <div class="collapsible-body collapsed" id="tablaBody" style="max-height:400px; margin-top:12px;">
+    <div class="collapsible-body collapsed" id="tablaBody" style="max-height:500px; margin-top:12px;">
       <table>
-        <tr><th>Donde</th><th>Recorte</th><th>Cuidar</th></tr>
-        <tr><td>Destacados</td><td>Corta arriba/abajo</td><td>Centrar verticalmente</td></tr>
-        <tr><td>Proximos Eventos</td><td>Corta los lados</td><td>Contenido al CENTRO</td></tr>
-        <tr><td>Busqueda</td><td>Corta arriba/abajo</td><td>Similar a destacados</td></tr>
-        <tr><td>Detalle</td><td>Sin recorte (16:10)</td><td>Se ve completa</td></tr>
+        <tr><th>Seccion</th><th>Formato</th><th>Medida</th></tr>
+        <tr><td><strong>Destacados</strong></td><td>Cuadrado 1:1</td><td>1080 x 1080 px</td></tr>
+        <tr><td><strong>Proximos Eventos</strong></td><td>Card cuadrado 1:1</td><td>70 x 70 px (se escala)</td></tr>
+        <tr><td><strong>Busqueda</strong></td><td>Cuadrado 1:1</td><td>1080 x 1080 px</td></tr>
+        <tr><td><strong>Detalle del Evento</strong></td><td>Aspect ratio 1:1</td><td>1080 x 1080 px</td></tr>
+        <tr><td><strong>Instagram / Facebook</strong></td><td>Compatible directo</td><td>1080 x 1080 px</td></tr>
       </table>
     </div>
   </div>
 
+  <!-- Reglas -->
   <div class="section">
     <div class="collapsible-header" onclick="toggleCollapsible('reglasBody', this)">
-      <h2 style="margin-bottom:0;">Reglas para una Buena Imagen</h2>
+      <h2 style="margin-bottom:0;">Reglas para imagenes</h2>
       <span class="toggle-icon">&#9660;</span>
     </div>
     <div class="collapsible-body collapsed" id="reglasBody" style="max-height:500px; margin-top:12px;">
       <div class="reglas">
-        <div class="regla ok"><h4>Medida correcta</h4><p>Siempre <strong>1200 x 750 px</strong> minimo.</p></div>
-        <div class="regla ok"><h4>Contenido centrado</h4><p>Logo o elemento principal en el <strong>centro</strong>.</p></div>
-        <div class="regla ok"><h4>Formato horizontal</h4><p>Siempre <strong>horizontal</strong> (landscape), nunca vertical.</p></div>
-        <div class="regla ok"><h4>Buena iluminacion</h4><p>Buena luz, colores vivos, alto contraste.</p></div>
-        <div class="regla warning"><h4>Texto en la imagen</h4><p>Usa <strong>letras grandes y gruesas</strong>.</p></div>
-        <div class="regla warning"><h4>No saturar</h4><p>Menos es mas. Un elemento principal y fondo limpio.</p></div>
-        <div class="regla error"><h4>NO verticales</h4><p>Se recortaran mal en los lados.</p></div>
+        <div class="regla ok"><h4>Medida ideal</h4><p><strong>1080 x 1080 px</strong> — exactamente cuadrada.</p></div>
+        <div class="regla ok"><h4>Contenido centrado</h4><p>Logo o elemento principal en el <strong>centro</strong>. Margenes de 10% en todos los lados.</p></div>
+        <div class="regla ok"><h4>Mismo flyer de Instagram</h4><p>Descarga tu flyer de Instagram y <strong>subelo directo</strong> sin editar.</p></div>
+        <div class="regla ok"><h4>Buena iluminacion</h4><p>Colores vivos, alto contraste, buena luz.</p></div>
+        <div class="regla warning"><h4>Texto en la imagen</h4><p>Usa <strong>letras grandes y gruesas</strong>. El titulo y fecha deben leerse bien en el card pequeno.</p></div>
+        <div class="regla error"><h4>NO imagenes muy verticales</h4><p>Si el flyer es 9:16 (historia), se recortaran los lados en el card.</p></div>
         <div class="regla error"><h4>NO menores a 800px</h4><p>Se veran borrosas y pixeladas.</p></div>
       </div>
-    </div>
-  </div>
-
-  <!-- Informacion necesaria -->
-  <div class="section">
-    <div class="collapsible-header" onclick="toggleCollapsible('infoEventoBody', this)">
-      <h2 style="margin-bottom:0;">Informacion necesaria para publicar un Evento</h2>
-      <span class="toggle-icon">&#9660;</span>
-    </div>
-    <div class="collapsible-body collapsed" id="infoEventoBody" style="max-height:800px; margin-top:12px;">
-      <p class="desc">Ten lista esta informacion antes de crear tu evento</p>
-      <table>
-        <tr><th>Campo</th><th>Requerido</th><th>Detalle</th></tr>
-        <tr><td><strong>Titulo</strong></td><td>Si</td><td>Maximo 50 caracteres</td></tr>
-        <tr><td><strong>Clasificacion por edad</strong></td><td>Si</td><td>Edad minima recomendada (Todos, +13, +18, etc.)</td></tr>
-        <tr><td><strong>Categorias</strong></td><td>Si</td><td>Minimo 1, maximo 5 (Musica, Teatro, Arte, etc.)</td></tr>
-        <tr><td><strong>Sede</strong></td><td>Si</td><td>Seleccionar o crear una sede (nombre + direccion)</td></tr>
-        <tr><td><strong>Descripcion</strong></td><td>Si</td><td>Entre 30 y 600 caracteres</td></tr>
-        <tr><td><strong>Fecha y hora inicio</strong></td><td>Si</td><td>Dia y hora en que comienza</td></tr>
-        <tr><td><strong>Fecha y hora fin</strong></td><td>No</td><td>Dia y hora en que termina (opcional)</td></tr>
-        <tr><td><strong>Imagen</strong></td><td>Si</td><td>Horizontal (16:10). Ideal 1200 x 750 px. JPG o PNG, max 10 MB</td></tr>
-        <tr><td><strong>Precio</strong></td><td>Si</td><td>Gratuito o con costo (puede tener rango de precios y descuentos)</td></tr>
-        <tr><td>Telefono / WhatsApp</td><td>No</td><td>8 a 10 digitos</td></tr>
-        <tr><td>Evento recurrente</td><td>No</td><td>Si se repite: semanal, quincenal, mensual, semestral, anual</td></tr>
-        <tr><td>Multiples fechas</td><td>No</td><td>Si tiene diferentes horarios cada dia</td></tr>
-      </table>
     </div>
   </div>
 
@@ -518,18 +369,10 @@
       var s1 = document.getElementById('step1');
       var s2 = document.getElementById('step2');
       var l1 = document.getElementById('line1');
-
-      s1.className = 'step'; s2.className = 'step';
-      l1.className = 'step-line';
-
+      s1.className = 'step'; s2.className = 'step'; l1.className = 'step-line';
       if (step >= 1) { s1.className = step > 1 ? 'step done' : 'step active'; }
       if (step >= 2) { s2.className = 'step active'; l1.className = 'step-line done'; }
     }
-
-    updateSteps(1);
-
-    // Show upload and zona on load
-    document.getElementById('zona-section').style.display = 'block';
 
     uploadArea.addEventListener('dragover', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#1565C0'; uploadArea.style.background = '#e3f2fd'; });
     uploadArea.addEventListener('dragleave', function(e) { e.preventDefault(); uploadArea.style.borderColor = '#2196F3'; uploadArea.style.background = '#f8fbff'; });
@@ -556,19 +399,17 @@
           cambiarBtn.className = 'cambiar-btn visible';
 
           var info = '';
-          if (w >= 1200 && h >= 750) info += '<div class="img-info-item ok"><strong>Medida:</strong> ' + w + 'x' + h + ' px (perfecta)</div>';
-          else if (w >= 1000 && h >= 625) info += '<div class="img-info-item warning"><strong>Medida:</strong> ' + w + 'x' + h + ' px (aceptable)</div>';
-          else info += '<div class="img-info-item error"><strong>Medida:</strong> ' + w + 'x' + h + ' px (muy pequena)</div>';
+          if (w >= 1000 && h >= 1000 && Math.abs(ratio - 1) < 0.1) {
+            info += '<div class="img-info-item ok"><strong>Medida:</strong> ' + w + 'x' + h + ' px — perfecta</div>';
+          } else if (w >= 800 && h >= 800) {
+            info += '<div class="img-info-item warning"><strong>Medida:</strong> ' + w + 'x' + h + ' px — aceptable, ideal 1080x1080</div>';
+          } else {
+            info += '<div class="img-info-item error"><strong>Medida:</strong> ' + w + 'x' + h + ' px — muy pequena</div>';
+          }
 
-          if (w > h) info += '<div class="img-info-item ok"><strong>Orientacion:</strong> Horizontal</div>';
-          else if (w === h) info += '<div class="img-info-item warning"><strong>Orientacion:</strong> Cuadrada</div>';
-          else info += '<div class="img-info-item error"><strong>Orientacion:</strong> Vertical (se recortara)</div>';
-
-          var idealRatio = 1.6; // 16:10
-          var diff = Math.abs(ratio - idealRatio);
-          if (diff < 0.1) info += '<div class="img-info-item ok"><strong>Proporcion:</strong> ' + ratio + ' (16:10)</div>';
-          else if (diff < 0.3) info += '<div class="img-info-item warning"><strong>Proporcion:</strong> ' + ratio + ' (ideal 1.60)</div>';
-          else info += '<div class="img-info-item error"><strong>Proporcion:</strong> ' + ratio + ' (mucho recorte)</div>';
+          if (Math.abs(ratio - 1) < 0.1) info += '<div class="img-info-item ok"><strong>Proporcion:</strong> Cuadrada ' + ratio + ' — ideal</div>';
+          else if (w > h) info += '<div class="img-info-item warning"><strong>Proporcion:</strong> Horizontal ' + ratio + ' — se recortara arriba/abajo</div>';
+          else info += '<div class="img-info-item warning"><strong>Proporcion:</strong> Vertical ' + ratio + ' — se recortaran los lados</div>';
 
           if (sizeMB <= 5) info += '<div class="img-info-item ok"><strong>Peso:</strong> ' + sizeMB + ' MB</div>';
           else if (sizeMB <= 10) info += '<div class="img-info-item warning"><strong>Peso:</strong> ' + sizeMB + ' MB</div>';
@@ -576,10 +417,6 @@
 
           imgInfo.innerHTML = info;
           imgInfo.style.display = 'flex';
-
-          document.getElementById('zonaPlaceholder').style.display = 'none';
-          document.getElementById('zonaConImagen').style.display = 'block';
-          document.getElementById('zonaImg').src = e.target.result;
 
           imagenCargada = e.target.result;
           mostrarPreviews(e.target.result);
@@ -592,10 +429,9 @@
 
     function mostrarPreviews(src) {
       document.getElementById('previews-section').style.display = 'block';
-      updatePreview('prev-destacado', src);
-      updatePreview('prev-card', src);
-      updatePreview('prev-busqueda', src);
-      updatePreview('prev-detalle', src);
+      updatePreview('preview-destacado', src);
+      updatePreview('preview-card', src);
+      updatePreview('preview-detalle', src);
       document.getElementById('previews-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
